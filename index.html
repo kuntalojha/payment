@@ -169,9 +169,14 @@ function pay(){
 
   document.getElementById("success").classList.remove("hidden");
 
-  const upiLink =
-    `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
+  // const upiLink =
+  //   `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
+    
+    // console.log(upiLink);
+    // alert(upiLink);
 
+    const upiLink =
+  `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR&tn=Support`;
   window.location.href = upiLink;
 
   // generateQR(amount);
