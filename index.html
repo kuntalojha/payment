@@ -120,10 +120,10 @@
       class="w-full mt-4 p-3 rounded-xl glass outline-none"/>
 
     <!-- PAY BUTTON -->
-    <button onclick="pay()"
-      class="w-full mt-4 py-3 rounded-xl font-bold bg-gradient-to-r from-green-400 to-emerald-500 text-black btn-glow transition">
-      Pay via UPI 🚀
-    </button>
+    <button onclick="showApps()"
+  class="w-full mt-4 py-3 rounded-xl font-bold bg-gradient-to-r from-green-400 to-emerald-500 text-black btn-glow transition">
+  Pay via UPI 🚀
+</button>
 
     <!-- SUCCESS -->
     <p id="success" class="hidden text-center text-green-400 mt-3 text-sm animate-pulse">
@@ -159,27 +159,27 @@ function copyUPI(){
   alert("UPI ID copied!");
 }
 
-function pay(){
-  const amount = document.getElementById("amount").value;
+// function pay(){
+//   const amount = document.getElementById("amount").value;
 
-  if(!amount || amount <= 0){
-    alert("Enter valid amount");
-    return;
-  }
+//   if(!amount || amount <= 0){
+//     alert("Enter valid amount");
+//     return;
+//   }
 
-  document.getElementById("success").classList.remove("hidden");
+//   document.getElementById("success").classList.remove("hidden");
 
-  // const upiLink =
-  //   `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
+//   // const upiLink =
+//   //   `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
     
-    // console.log(upiLink);
-    // alert(upiLink);
+//     // console.log(upiLink);
+//     // alert(upiLink);
 
-    const upiLink =
-  `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR&tn=BuyMeAChai`;
-window.open(upiLink, "_self");
-  // generateQR(amount);
-}
+//     const upiLink =
+//   `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR&tn=BuyMeAChai`;
+// window.open(upiLink, "_self");
+//   // generateQR(amount);
+// }
 
 // QR
 // function generateQR(amount = 20){
@@ -194,8 +194,75 @@ window.open(upiLink, "_self");
 // }
 
 // generateQR(20);
+function showApps() {
+  const amount = document.getElementById("amount").value;
 
+  if (!amount || amount <= 0) {
+    alert("Enter valid amount");
+    return;
+  }
+
+  document.getElementById("upiModal").classList.remove("hidden");
+}
+
+function closeModal() {
+  document.getElementById("upiModal").classList.add("hidden");
+}
+
+function openUPI(app) {
+
+  const amount = document.getElementById("amount").value;
+
+  const genericUPI =
+    `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR&tn=BuyMeAChai`;
+
+  if (app === "gpay") {
+
+    const gpayLink =
+      `tez://upi/pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR&tn=BuyMeAChai`;
+
+    window.location.href = gpayLink;
+
+  } else {
+
+    window.location.href = genericUPI;
+
+  }
+
+  closeModal();
+}
 </script>
+<!-- UPI APP MODAL -->
+<div id="upiModal"
+     class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
 
+  <div class="glass rounded-2xl p-6 w-[90%] max-w-sm">
+
+    <h2 class="text-lg font-bold text-center mb-4">
+      Choose Payment App
+    </h2>
+
+    <div class="grid gap-3">
+
+      <button onclick="openUPI('gpay')"
+        class="glass rounded-xl py-3 hover:bg-white/10">
+        Google Pay
+      </button>
+
+      <button onclick="openUPI('generic')"
+        class="glass rounded-xl py-3 hover:bg-white/10">
+        Any UPI App
+      </button>
+
+      <button onclick="closeModal()"
+        class="bg-red-500 rounded-xl py-3">
+        Cancel
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
 </body>
 </html>
