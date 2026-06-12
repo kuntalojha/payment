@@ -1,268 +1,195 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Buy Me a Chai ☕</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buy Me a Chai ☕</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-<!-- Glow Font -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-<style>
-  body {
-    font-family: Inter, sans-serif;
-  }
+      body {
+        font-family: 'Inter', sans-serif;
+      }
 
-  /* Neon background blobs */
-  .blob {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    filter: blur(90px);
-    opacity: 0.4;
-    animation: float 6s infinite ease-in-out;
-  }
+      .blob {
+        position: absolute;
+        width: 320px;
+        height: 320px;
+        border-radius: 999px;
+        filter: blur(100px);
+        opacity: 0.35;
+        animation: float 8s ease-in-out infinite;
+      }
 
-  .blob1 { background: #22c55e; top: -80px; left: -80px; }
-  .blob2 { background: #3b82f6; bottom: -80px; right: -80px; }
+      .blob1 {
+        background: #22c55e;
+        top: -100px;
+        left: -100px;
+      }
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(20px); }
-  }
+      .blob2 {
+        background: #3b82f6;
+        bottom: -100px;
+        right: -100px;
+      }
 
-  /* Glow animation */
-  .glow {
-    box-shadow: 0 0 20px rgba(34,197,94,0.5);
-  }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(30px);
+        }
+      }
 
-  .glass {
-    background: rgba(255,255,255,0.06);
-    backdrop-filter: blur(18px);
-    border: 1px solid rgba(255,255,255,0.1);
-  }
+      .glass {
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(18px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
 
-  .btn-glow:hover {
-    box-shadow: 0 0 25px rgba(34,197,94,0.6);
-    transform: scale(1.03);
-  }
-</style>
-</head>
+      .glow {
+        box-shadow: 0 0 30px rgba(34, 197, 94, 0.45);
+      }
 
-<body class="bg-slate-950 text-white min-h-screen flex items-center justify-center p-4 overflow-hidden">
+      .amount-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 0 25px rgba(34, 197, 94, 0.2);
+      }
 
-<!-- neon blobs -->
-<div class="blob blob1"></div>
-<div class="blob blob2"></div>
+      .selected {
+        border-color: #22c55e !important;
+        box-shadow: 0 0 20px rgba(34, 197, 94, 0.35);
+      }
+    </style>
+  </head>
 
-<div class="w-full max-w-lg relative z-10 p-2 rounded-3xl border border-white/20 bg-white/5">
+  <body class="bg-slate-950 text-white min-h-screen overflow-x-hidden">
+    <!-- BLOBS -->
 
-  <!-- CARD -->
-  <div class="glass rounded-2xl p-6 shadow-2xl">
-    <!-- PROFILE -->
-    <div class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
-      <div class="relative">
-        <img src="https://github.com/kuntalojha.png"
-             class="w-16 h-16 rounded-full border border-green-400 glow"/>
-        <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full animate-pulse"></span>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+
+    <div
+      class="container mx-auto px-4 py-8 min-h-screen flex items-center justify-center"
+    >
+      <div
+        class="w-full max-w-xl relative z-10 p-[2px] rounded-3xl bg-gradient-to-r from-green-500/40 via-cyan-500/30 to-blue-500/40"
+      >
+        <div class="glass rounded-[22px] p-6 md:p-8">
+          <!-- PROFILE -->
+
+          <div class="text-center">
+            <img
+              src="https://github.com/kuntalojha.png"
+              alt="Kuntal Ojha"
+              class="w-24 h-24 md:w-28 md:h-28 rounded-full mx-auto border-2 border-green-400 glow"
+            />
+
+            <h1 class="mt-5 text-3xl font-extrabold">Buy Me a Chai ☕</h1>
+
+            <p class="mt-2 text-slate-400">
+              Support my open-source projects and development work
+            </p>
+          </div>
+
+          <!-- UPI CARD -->
+
+          <div class="glass rounded-2xl p-4 mt-8">
+            <div
+              class="flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between"
+            >
+              <div>
+                <p class="text-xs uppercase tracking-wider text-slate-500">
+                  UPI ID
+                </p>
+
+                <p class="font-semibold break-all mt-1">
+                  kuntalojha2021-1@okicici
+                </p>
+              </div>
+
+              <button
+                id="copyBtn"
+                onclick="copyUPI()"
+                class="px-4 py-2 rounded-xl bg-green-500/20 border border-green-500/20 hover:bg-green-500/30 transition"
+              >
+                Copy
+              </button>
+            </div>
+          </div>
+
+          <!-- QR -->
+
+          <div class="mt-8">
+            <div class="glass rounded-3xl p-6 text-center">
+              <h3 class="text-xl font-bold">Scan & Support</h3>
+
+              <p class="text-sm text-slate-400 mt-2">
+                Google Pay • PhonePe • Paytm • BHIM • Any UPI App
+              </p>
+
+              <img
+                src="qr.jpeg"
+                alt="UPI QR"
+                class="w-64 h-64 md:w-72 md:h-72 mx-auto mt-6 rounded-2xl bg-white p-3 shadow-2xl"
+              />
+
+              <div class="mt-6 text-sm text-slate-400">
+                Select amount above and pay using your preferred UPI app.
+              </div>
+            </div>
+          </div>
+
+          <!-- FOOTER -->
+
+          <div class="mt-8 text-center">
+            <div class="text-slate-500 text-sm">
+              Made with ❤️ by Kuntal Ojha
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div>
-        <h1 class="text-xl font-bold">Kuntal Ojha ☕</h1>
-        <p class="text-sm text-slate-300">
-          Full Stack Dev • Building Open Source Magic
-        </p>
-      </div>
     </div>
 
-    <!-- UPI -->
-    <div class="mt-5 flex items-center justify-between glass p-3 rounded-xl">
-      <span class="text-sm">UPI: <b>kuntalojha2021-1@okicici</b></span>
-      <button onclick="copyUPI()"
-        class="px-3 py-1 text-xs bg-white/10 hover:bg-white/20 rounded-lg">
-        Copy
-      </button>
-    </div>
+    <script>
+      const upiID = 'kuntalojha@upi';
 
-    <!-- TIERS -->
-<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5">
-      <button onclick="setAmount(20)"
-        class="glass btn-glow rounded-xl py-3 transition">
-        ☕ ₹20
-      </button>
+      function copyUPI() {
+        navigator.clipboard.writeText(upiID);
 
-      <button onclick="setAmount(50)"
-        class="glass btn-glow rounded-xl py-3 transition">
-        ☕☕ ₹50
-      </button>
+        const btn = document.getElementById('copyBtn');
 
-      <button onclick="setAmount(100)"
-        class="glass btn-glow rounded-xl py-3 transition">
-        ☕☕☕ ₹100
-      </button>
+        btn.innerText = 'Copied ✓';
 
-      <button onclick="setAmount(500)"
-        class="glass btn-glow rounded-xl py-3 transition">
-        🔥 ₹500
-      </button>
+        setTimeout(() => {
+          btn.innerText = 'Copy';
+        }, 2000);
+      }
 
-    </div>
+      function setAmount(amount, element) {
+        document.getElementById('amount').value = amount;
 
-    <!-- INPUT -->
-    <input id="amount"
-      type="number"
-      placeholder="Enter custom amount"
-      class="w-full mt-4 p-3 rounded-xl glass outline-none"/>
+        document
+          .querySelectorAll('.amount-card')
+          .forEach((card) => card.classList.remove('selected'));
 
-    <!-- PAY BUTTON -->
-    <button onclick="showApps()"
-  class="w-full mt-4 py-3 rounded-xl font-bold bg-gradient-to-r from-green-400 to-emerald-500 text-black btn-glow transition">
-  Pay via UPI 🚀
-</button>
-
-    <!-- SUCCESS -->
-    <p id="success" class="hidden text-center text-green-400 mt-3 text-sm animate-pulse">
-      Payment request opened ❤️ Thank you!
-    </p>
-
-    <!-- QR -->
-    <div class="mt-6 text-center">
-      <p class="text-xs text-slate-400">Scan QR to pay instantly</p>
-      <div class="flex justify-center mt-2">
-        <img
-            src="qr.jpeg"
-            alt="UPI QR Code"
-            class="w-40 h-40 sm:w-48 sm:h-48 mx-auto rounded-xl bg-white p-2"
-        />
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<script>
-
-const upiID = "kuntalojha2021-1@okicici";
-const name = "Kuntal Ojha";
-
-function setAmount(val){
-  document.getElementById("amount").value = val;
-}
-
-function copyUPI(){
-  navigator.clipboard.writeText(upiID);
-  alert("UPI ID copied!");
-}
-
-// function pay(){
-//   const amount = document.getElementById("amount").value;
-
-//   if(!amount || amount <= 0){
-//     alert("Enter valid amount");
-//     return;
-//   }
-
-//   document.getElementById("success").classList.remove("hidden");
-
-//   // const upiLink =
-//   //   `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
-    
-//     // console.log(upiLink);
-//     // alert(upiLink);
-
-//     const upiLink =
-//   `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR&tn=BuyMeAChai`;
-// window.open(upiLink, "_self");
-//   // generateQR(amount);
-// }
-
-// QR
-// function generateQR(amount = 20){
-//   const upiLink =
-//     `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
-
-//   document.getElementById("qrcode").innerHTML = "";
-
-//   QRCode.toCanvas(upiLink, { width: 160 }, function (err, canvas) {
-//     document.getElementById("qrcode").appendChild(canvas);
-//   });
-// }
-
-// generateQR(20);
-function showApps() {
-  const amount = document.getElementById("amount").value;
-
-  if (!amount || amount <= 0) {
-    alert("Enter valid amount");
-    return;
-  }
-
-  document.getElementById("upiModal").classList.remove("hidden");
-}
-
-function closeModal() {
-  document.getElementById("upiModal").classList.add("hidden");
-}
-
-function openUPI(app) {
-
-  const amount = document.getElementById("amount").value;
-
-  const genericUPI =
-    `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR&tn=BuyMeAChai`;
-
-  if (app === "gpay") {
-
-    const gpayLink =
-      `tez://upi/pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR&tn=BuyMeAChai`;
-
-    window.location.href = gpayLink;
-
-  } else {
-
-    window.location.href = genericUPI;
-
-  }
-
-  closeModal();
-}
-</script>
-<!-- UPI APP MODAL -->
-<div id="upiModal"
-     class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
-
-  <div class="glass rounded-2xl p-6 w-[90%] max-w-sm">
-
-    <h2 class="text-lg font-bold text-center mb-4">
-      Choose Payment App
-    </h2>
-
-    <div class="grid gap-3">
-
-      <button onclick="openUPI('gpay')"
-        class="glass rounded-xl py-3 hover:bg-white/10">
-        Google Pay
-      </button>
-
-      <button onclick="openUPI('generic')"
-        class="glass rounded-xl py-3 hover:bg-white/10">
-        Any UPI App
-      </button>
-
-      <button onclick="closeModal()"
-        class="bg-red-500 rounded-xl py-3">
-        Cancel
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-</body>
+        element.classList.add('selected');
+      }
+    </script>
+  </body>
 </html>
