@@ -176,9 +176,8 @@ function pay(){
     // alert(upiLink);
 
     const upiLink =
-  `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR&tn=Support`;
-  window.location.href = upiLink;
-
+  `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR&tn=BuyMeAChai`;
+window.open(upiLink, "_self");
   // generateQR(amount);
 }
 
